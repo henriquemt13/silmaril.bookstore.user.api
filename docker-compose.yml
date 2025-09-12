@@ -1,0 +1,24 @@
+version: "4.0"
+
+services:
+  database:
+    image: postgres:13
+    container_name: user
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+
+  user-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - DB_SERVER=database
+      - SERVER_PORT=8080
+    ports:
+      - "8080:8080"
