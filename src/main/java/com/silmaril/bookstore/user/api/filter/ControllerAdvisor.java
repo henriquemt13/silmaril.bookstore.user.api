@@ -23,7 +23,7 @@ public class ControllerAdvisor {
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
-    public ErrorResponse handleContraintViolationException(ConstraintViolationException ex,
+    public ErrorResponse handleConstraintViolationException(ConstraintViolationException ex,
           WebRequest request) {
         List<String> errors = new ArrayList<>();
         ex.getConstraintViolations().forEach(e -> errors.add(
